@@ -52,6 +52,14 @@ func NewEncoder(w io.Writer) *Encoder {
 	}
 }
 
+func (e *Encoder) Reset(w io.Writer) {
+	bw, ok := w.(writer)
+	if !ok {
+		bw = byteWriter{Writer: w}
+	}
+	e.w = bw
+}
+
 // SortMapKeys causes the Encoder to encode map keys in increasing order.
 // Supported map types are:
 //   - map[string]string
