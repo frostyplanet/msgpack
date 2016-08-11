@@ -213,11 +213,11 @@ func decodeStructValue(d *Decoder, strct reflect.Value) error {
 
 	skipTimes := 0
 	for i := 0; i < n; i++ {
-		name, err := d.DecodeString()
+		name, err := d.bytesNoCopy()
 		if err != nil {
 			return err
 		}
-		if f := fields.Table[name]; f != nil {
+		if f := fields.Table[string(name)]; f != nil {
 			if err := f.DecodeValue(d, strct); err != nil {
 				return err
 			}
