@@ -46,11 +46,8 @@ func (m *structCache) Fields(typ reflect.Type) *fields {
 	m.l.RUnlock()
 	if !ok {
 		m.l.Lock()
-		fs, ok = m.m[typ]
-		if !ok {
-			fs = getFields(typ)
-			m.m[typ] = fs
-		}
+		fs = getFields(typ)
+		m.m[typ] = fs
 		m.l.Unlock()
 	}
 
