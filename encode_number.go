@@ -4,7 +4,7 @@ import (
 	"math"
 	"reflect"
 
-	"gopkg.in/vmihailenco/msgpack.v2/codes"
+	"github.com/frostyplanet/msgpack/codes"
 )
 
 func (e *Encoder) EncodeUint(v uint) error {

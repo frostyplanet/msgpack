@@ -3,8 +3,8 @@ package msgpack_test
 import (
 	"testing"
 
-	"gopkg.in/vmihailenco/msgpack.v2"
-	"gopkg.in/vmihailenco/msgpack.v2/codes"
+	"github.com/frostyplanet/msgpack"
+	"github.com/frostyplanet/msgpack/codes"
 )
 
 func init() {
