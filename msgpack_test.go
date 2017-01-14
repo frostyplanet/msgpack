@@ -623,13 +623,12 @@ func TestDecodeStrictMode(t *testing.T) {
 	var err error
 	type A struct {
 		F1 int
-		F2 int
 		F3 int
 	}
-	a := A{1, 2, 3}
+	a := A{1, 3}
 	type B struct {
 		F1 int
-		F2 int `msgpack:",omitEmpty"`
+		F2 int `msgpack:",omitempty"`
 	}
 	b := B{}
 	buf, err := msgpack.Marshal(&a)
@@ -645,7 +644,7 @@ func TestDecodeStrictMode(t *testing.T) {
 	println("B:", b.F1, b.F2)
 	type C struct {
 		F1 int
-		F2 int `msgpack:",omitEmpty"`
+		F2 int `msgpack:",omitempty"`
 		F4 int
 	}
 	c := C{}

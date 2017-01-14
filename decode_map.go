@@ -222,6 +222,7 @@ func decodeStructValue(d *Decoder, strct reflect.Value) error {
 				return err
 			}
 			if f.omitEmpty {
+				// Optional field present
 				skipTimes ++
 			}
 		} else {
