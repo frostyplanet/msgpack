@@ -11,8 +11,8 @@ import (
 
 	. "gopkg.in/check.v1"
 
-	msgpack "./"
-	codes "./codes"
+	msgpack "github.com/frostyplanet/msgpack"
+	codes "github.com/frostyplanet/msgpack/codes"
 )
 
 type nameStruct struct {
