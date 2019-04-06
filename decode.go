@@ -39,6 +39,18 @@ func Unmarshal(b []byte, v ...interface{}) error {
 	return NewDecoder(bytes.NewReader(b)).Decode(v...)
 }
 
+func UnmarshalStrict(b []byte, v ...interface{}) error {
+	if len(v) == 1 && v[0] != nil {
+		unmarshaler, ok := v[0].(Unmarshaler)
+		if ok {
+			return unmarshaler.UnmarshalMsgpack(b)
+		}
+	}
+	d := NewDecoder(bytes.NewReader(b))
+	d.StrictMode = true
+	return d.Decode(v...)
+}
+
 type Decoder struct {
 	DecodeMapFunc func(*Decoder) (interface{}, error)
 	/*
